@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font: 700 30px 'Courier New';
+}
+
+#jogador{
+    background-color: rgb(232, 100, 237);
+}
+
+#computador{
+    background-color: rgb(0, 166, 255);
+}
+
+#jogadorEscolha, #computadorEscolha{
+    list-style: none;
+
+}
+
+#jogadorEscolha li, #computadorEscolha li{
+    display: inline;
+}
+
+img{
+    width: 96px;
+    margin: 0 25px;
+    border-radius: 80px;
+}
+
+#jogador, #computador{
+    position: relative;
+    flex-grow: 1;
+    width: 200px;
+    padding: 30px;
+    color: white;
+    border-radius: 10px;
+}
+
+ #placar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#versus{
+    margin: 0 10px;
+}
+
+#jogadorEscolha li a,
+#computadorEscolha li a{
+    opacity: 0.2;
+    transition: ease-in-out 0.2s;
+}
+
+#jogadorEscolha li a:hover, #jogadorEscolha li a.selecionado,
+#computadorEscolha li a.selecionado{
+    opacity: 1;
+}
+
+#mensagem {
+    width: 200px;
+    height: 100px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0; /* Empurra para baixo */
+}

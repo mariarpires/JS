@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="titulo">
+        <h1 class="tituloPrincipal">Me manda um pix</h1>
+    </div>
+    <div class="botoes">
+        <div class="botaoS">
+            <button class="btn" onclick="sim()">Sim</button>
+        </div>
+        <div class="botaoN">
+            <button class="btn" id="btn" onclick="desvia()" onmouseover="desvia()">Não</button>
+        </div>
+    </div>
+    <script>
+        function sim() {
+            window.location.href = "https://www.youtube.com/watch?v=WrBznflRvB8"
+        }
+        function desvia() {
+            let btn = document.getElementById("btn")
+            btn.style.position = "absolute"
+            btn.style.bottom = geraPosicao(10,80)
+            btn.style.left = geraPosicao(10,80)
+          
+        }
+        function geraPosicao(min, max){
+            return (Math.random() * (max - min)+min)+"%"
+        }
+    </script>
+</body>
+</html>
