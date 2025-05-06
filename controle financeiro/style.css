@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    outline: none;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    padding: 15px 100px 8px;
+    display: flex;
+    align-items: center;
+}
+
+main {
+    max-width: 550px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bxs-chevron-up-circle {
+    color: green;
+}
+
+.bxs-chevron-down-circle {
+    color: red;
+}
+
+.resumo {
+    display: flex;
+    padding: 10px 0;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resumo>div {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+}
+
+.novo-item {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.divDesc,
+.divTipo,
+.divValor {
+    display: flex;
+    flex-direction: column;
+}
+
+.novoItem>button {
+    background-color: #788699;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 34px;
+}
+
+input,
+select {
+    padding: 5px;
+}
+
+.tabela-itens {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 98%;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+th {
+    text-align: start;
+    border-bottom: inset;
+    padding-bottom: 5px;
+}
+
+i {
+    font-size: 25px;
+}
+
+.columnAcao {
+    width: 40px;
+    text-align: center;
+}
+
+input,
+select {
+    border-radius: 7px;
+}
+
+.columnAcao>button {
+    background: transparent;
+    border: none;
+}
+
+.columnValor {
+    width: 30%;
+}
+
+.columnTipo {
+    width: 80px;
+    text-align: center;
+}
