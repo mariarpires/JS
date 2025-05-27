@@ -1,48 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Moedas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contagem Regressiva - Dia das Crianças</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div class="container">
-        <h1>Conversor de Moedas</h1>
-        <div class="conversor">
-            <div class="grupo-campo">
-                <label for="valor">Valor:</label>
-                <input type="number" id="valor" min="0" step="0.01" value="1">
-            </div>
-            <div class="grupo-campo">
-                <label for="moeda-origem">De:</label>
+  <h1>🎉 Contagem Regressiva para o Dia das Crianças 🎈</h1>
 
-                <select id="moeda-origem">
-                    <option value="BRL">Real (BRL)</option>
-                    <option value="USD">Dólar (USD)</option>
-                    <option value="EUR">Euro (EUR)</option>
-                    <option value="GBP">Libra (GBP)</option>
-                </select>
-            </div>
-            <div class="grupo-campo">
-                <label for="moeda-destino">Para:</label>
-                <select id="moeda-destino">
-                    <option value="USD">Dólar (USD)</option>
-                    <option value="BRL">Real (BRL)</option>
-                    <option value="EUR">Euro (EUR)</option>
-                    <option value="GBP">Libra (GBP)</option>
-                </select>
-            </div>
-            <button id="converter">Converter</button>
-            <div class="resultado">
-                <h2>Resultado:</h2>
-                <p id="valor-convertido">-</p>
-            </div>
-        </div>
+  <div id="contador">
+    <div class="p-container">
+      <p><span id="dias-numero">0</span><br><span class="rotulo">Dias</span></p>
+      <p><span id="horas-numero">0</span><br><span class="rotulo">Horas</span></p>
+      <p><span id="minutos-numero">0</span><br><span class="rotulo">Minutos</span></p>
+      <p><span id="segundos-numero">0</span><br><span class="rotulo">Segundos</span></p>
     </div>
-    <script src="script.js"></script>
-</body>
+  </div>
 
-</html>
+  <!-- Balões animados -->
+  <div class="balao"></div>
+  <div class="balao"></div>
+  <div class="balao"></div>
+  <div class="balao"></div>
+  <div class="balao"></div>
+
+  <script>
+    function atualizarContador() {
+      const agora = new Date();
+      const dataAlvo = new Date(2025, 10, 12); // Junho (0 = Janeiro)
+      const diferenca = dataAlvo - agora;
+
+      if (diferenca <= 0) {
+        document.getElementById("contador").innerHTML = "<p>🎁 Chegou! Feliz Dia das Crianças! 🎉</p>";
+        clearInterval(intervalo);
+        return;
+      }
+
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+      document.getElementById("dias-numero").textContent = dias;
+      document.getElementById("horas-numero").textContent = horas;
+      document.getElementById("minutos-numero").textContent = minutos;
+      document.getElementById("segundos-numero").textContent = segundos;
+    }
+
+    atualizarContador();
+    const intervalo = setInterval(atualizarContador, 1000);
+  </script>
+  <div id="progresso-container">
+  <div id="barra-progresso"></div>
+</div>
+
+  <audio id="som-final">
+  <source src="aplausos.mp3" type="audio/mpeg">
+</audio>
+<script src="script.js"></script>
+</body>
+</html

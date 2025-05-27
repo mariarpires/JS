@@ -1,45 +1,40 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const valorInput = document.getElementById("valor")
-    const moedaOrigem = document.getElementById("moeda-origem")
-    const moedaDestino = document.getElementById("moeda-destino")
-    const converter = document.getElementById("converter")
-    const valorConvertido = document.getElementById("valor-convertido")
+for (let i = 0; i < 15; i++) {
+  const balao = document.createElement('div');
+  balao.classList.add('balao');
+  balao.style.left = `${Math.random() * 100}%`;
+  balao.style.animationDuration = `${8 + Math.random() * 4}s`;
+  balao.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 100%, 75%) 40%, hsl(${Math.random() * 360}, 100%, 60%) 100%)`;
+  document.body.appendChild(balao);
+}
 
-    converter.addEventListener("click", async () => {
-        const valor = valorInput.value
-        const moeda = moedaOrigem.value
-        const destino = moedaDestino.value
+function atualizarContador() {
+  const agora = new Date();
+  const dataAlvo = new Date(2025, 9, 12); // Outubro = 9
+  const diferenca = dataAlvo - agora;
 
-        if (!valor || valor <= 0) {
-            alert("Insira um valor válido")
-            return
-        }
+  if (diferenca <= 0) {
+    document.getElementById("contador").innerHTML = "<p>🎉 Chegou o Dia das Crianças! 🎈</p>";
+    clearInterval(intervalo);
+    return;
+  }
 
-        try {
-            converter.disable = true
-            converter.textContent = "Convertendo..."
-            valorConvertido.textContent = "Calculando..."
+  const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-            const resposta = await fetch(`/converter?valor=${valor}&de=${moeda}&para=${destino}`)
-            const dados = await resposta.json()
+  document.getElementById("dias-numero").textContent = dias;
+  document.getElementById("horas-numero").textContent = horas;
+  document.getElementById("minutos-numero").textContent = minutos;
+  document.getElementById("segundos-numero").textContent = segundos;
+}
 
-            //if (dados.erro) {
-            //    throw new Error(dados.detalhes || dados.erro)
-            //}
+atualizarContador();
+const intervalo = setInterval(atualizarContador, 1000);
 
-            const valorFormatado = new Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: destino
-            }).format(dados.valorConvertido)
+const somFinal = document.getElementById("som-final");
 
-            valorConvertido.textContent = valorFormatado 
-        } catch (erro) {
-            console.error("erro completo: ", erro)
-            alert("Erro para converter moeda: ", erro.message)
-            valorConvertido.textContent = valorFormatado
-        } finally {
-            converter.disable = false
-            converter.textContent = "Converter"
-        }
-    })
-})
+const tempoTotal = dataAlvo - dataInicio;
+
+const porcentagem = ((tempoTotal - diferenca) / tempoTotal) * 100;
+document.getElementById("barra-progresso").style.width = `${porcentagem}%`;
