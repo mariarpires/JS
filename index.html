@@ -1,63 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contagem Regressiva - Dia das Crianças</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão Dia dos Namorados</title>
 </head>
 <body>
-  <h1>🎉 Contagem Regressiva para o Dia das Crianças 🎈</h1>
-
-  <div id="contador">
-    <div class="p-container">
-      <p><span id="dias-numero">0</span><br><span class="rotulo">Dias</span></p>
-      <p><span id="horas-numero">0</span><br><span class="rotulo">Horas</span></p>
-      <p><span id="minutos-numero">0</span><br><span class="rotulo">Minutos</span></p>
-      <p><span id="segundos-numero">0</span><br><span class="rotulo">Segundos</span></p>
+    <div class="container">
+        <div class="cartao" id="cartao">
+            <div class="frente">FELIZ DIA DOS NAMORADOS!
+            </div>
+            <div class="verso" id="mensagemVerso">
+            </div>
+        </div>
     </div>
-  </div>
+    
+    <script>
+        const cartao = document.getElementById("cartao");
+        const mensagemVerso = document.getElementById("mensagemVerso");
 
-  <!-- Balões animados -->
-  <div class="balao"></div>
-  <div class="balao"></div>
-  <div class="balao"></div>
-  <div class="balao"></div>
-  <div class="balao"></div>
+        const mensagem = "Você é o melhor namorado do mundo! 💖";
 
-  <script>
-    function atualizarContador() {
-      const agora = new Date();
-      const dataAlvo = new Date(2025, 10, 12); // Junho (0 = Janeiro)
-      const diferenca = dataAlvo - agora;
+        mensagemVerso.textContent = mensagem;
 
-      if (diferenca <= 0) {
-        document.getElementById("contador").innerHTML = "<p>🎁 Chegou! Feliz Dia das Crianças! 🎉</p>";
-        clearInterval(intervalo);
-        return;
-      }
+        cartao.addEventListener("click", () => {
+            cartao.classList.toggle("virado");
+        });
+    </script>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+.container {
+    width: 350px;
+    height: 200px;
+    perspective: 1000px;
+}
 
-      document.getElementById("dias-numero").textContent = dias;
-      document.getElementById("horas-numero").textContent = horas;
-      document.getElementById("minutos-numero").textContent = minutos;
-      document.getElementById("segundos-numero").textContent = segundos;
-    }
+.cartao {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+}
 
-    atualizarContador();
-    const intervalo = setInterval(atualizarContador, 1000);
-  </script>
-  <div id="progresso-container">
-  <div id="barra-progresso"></div>
-</div>
+.cartao.virado {
+    transform: rotateY(180deg);
+}
 
-  <audio id="som-final">
-  <source src="aplausos.mp3" type="audio/mpeg">
-</audio>
-<script src="script.js"></script>
+.frente, .verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 1.3rem;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+.frente {
+    background-color: #ff4d88;
+    color: white;
+}
+
+.verso {
+    background-color: #ff99bb;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+    </style>
 </body>
-</html
+</html>
